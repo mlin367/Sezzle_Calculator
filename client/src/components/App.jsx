@@ -1,6 +1,7 @@
 import React from 'react';
 import io from 'socket.io-client';
 import Calculator from './Calculator';
+import * as math from 'mathjs'
 import '../css/App.css';
 
 const socket = io('http://localhost:5000');
@@ -20,12 +21,24 @@ class App extends React.Component {
       });
     else
       this.setState({
-        expression: this.state.expression + value
+        expression: this.state.expression + ' ' + value
       });
   }
 
   evaluateExpression() {
-    console.log(eval(this.state.expression));
+    let resultString = this.state.expression.replace(/x/g, '*');
+    resultString = resultString.replace(/÷/g, '/');
+    try {
+      const answer = math.eval(resultString);
+      this.setState({
+        expression: this.state.expression + ' = ' + answer
+      })
+    }
+    catch(error) {
+      this.setState({
+        expression: 'Error'
+      })
+    }
   }
 
   render() {
