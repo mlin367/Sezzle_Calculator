@@ -9,10 +9,11 @@ const socket = io('http://localhost:5000');
 class App extends React.Component {
   state = {
     expression: '',
-    log: []
+    log: [],
+    finishedEvaluation: false
   };
 
-  handleOnClick(e) {
+  buttonClicks(e) {
     const value = e.target.getAttribute('data-value');
     if (value === 'C') this.setState({ expression: '' });
     else if (value === 'CE')
@@ -21,9 +22,21 @@ class App extends React.Component {
       });
     else
       this.setState({
-        expression: this.state.expression + ' ' + value
+        expression: this.state.expression + value
       });
   }
+
+  handleOnClick(e) {
+    e.persist();
+    if (this.state.finishedEvaluation) {
+      this.setState({
+        expression: '',
+        finishedEvaluation: false
+      }, () => this.buttonClicks(e));
+    } else {
+      this.buttonClicks(e);
+    }
+  } 
 
   evaluateExpression() {
     let resultString = this.state.expression.replace(/x/g, '*');
@@ -31,12 +44,14 @@ class App extends React.Component {
     try {
       const answer = math.eval(resultString);
       this.setState({
-        expression: this.state.expression + ' = ' + answer
+        expression: this.state.expression + ' = ' + answer,
+        finishedEvaluation: true
       })
     }
     catch(error) {
       this.setState({
-        expression: 'Error'
+        expression: 'Error',
+        finishedEvaluation: true
       })
     }
   }
