@@ -3,3 +3,14 @@
   grid-template-columns: 30px 30px 30px 30px;
   grid-template-rows: 30px 30px 30px 30px;
 }
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: grey;
+}

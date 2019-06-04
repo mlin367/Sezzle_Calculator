@@ -3,22 +3,22 @@ import '../css/Calculator.css';
 
 const Calculator = props => (
   <div className="calculator">
-    <div>7</div>
-    <div>8</div>
-    <div>9</div>
-    <div>÷</div>
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-    <div>x</div>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>-</div>
-    <div>0</div>
-    <div>.</div>
-    <div>=</div>
-    <div>+</div>
+    <div className="button">7</div>
+    <div className="button">8</div>
+    <div className="button">9</div>
+    <div className="button">÷</div>
+    <div className="button">4</div>
+    <div className="button">5</div>
+    <div className="button">6</div>
+    <div className="button">x</div>
+    <div className="button">1</div>
+    <div className="button">2</div>
+    <div className="button">3</div>
+    <div className="button">-</div>
+    <div className="button">0</div>
+    <div className="button">.</div>
+    <div className="button">=</div>
+    <div className="button">+</div>
   </div>
 );
 
