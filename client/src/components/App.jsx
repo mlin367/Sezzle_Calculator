@@ -7,7 +7,8 @@ const socket = io('http://localhost:5000');
 
 class App extends React.Component {
   state = {
-    expression: ''
+    expression: '',
+    log: []
   };
 
   handleOnClick(e) {
@@ -23,11 +24,17 @@ class App extends React.Component {
       });
   }
 
+  evaluateExpression() {
+    console.log(eval(this.state.expression));
+  }
+
   render() {
     return (
       <div className="app">
-        <h1>Sezzle Calculator</h1>
-        <Calculator handleOnClick={this.handleOnClick.bind(this)} />
+        <div>
+          <h1>Sezzle Calculator</h1>
+          <Calculator evaluateExpression={this.evaluateExpression.bind(this)} handleOnClick={this.handleOnClick.bind(this)} />
+        </div>
         <h2>{this.state.expression}</h2>
       </div>
     );

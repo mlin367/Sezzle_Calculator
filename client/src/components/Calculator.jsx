@@ -21,7 +21,7 @@ const Calculator = props => (
     <div onClick={props.handleOnClick} data-value="-" className="button">-</div>
     <div onClick={props.handleOnClick} data-value="0" className="button">0</div>
     <div onClick={props.handleOnClick} data-value="." className="button">.</div>
-    <div  data-value="=" className="button">=</div>
+    <div onClick={props.evaluateExpression} data-value="=" className="button">=</div>
     <div onClick={props.handleOnClick} data-value="+" className="button">+</div>
   </div>
 );
