@@ -1,6 +1,7 @@
 import React from 'react';
 import io from 'socket.io-client';
 import Calculator from './Calculator';
+import Log from './Log';
 import * as math from 'mathjs'
 import '../css/App.css';
 
@@ -19,6 +20,7 @@ class App extends React.Component {
         log: logData
       })
     })
+    socket.emit('evaluation', null);
   }
 
   buttonClicks(e) {
@@ -67,11 +69,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <div>
-          <h1>Sezzle Calculator</h1>
-          <Calculator evaluateExpression={this.evaluateExpression.bind(this)} handleOnClick={this.handleOnClick.bind(this)} />
+        <div className="appWrapper">
+          <div>
+            <h1>Sezzle Calculator</h1>
+            <Calculator evaluateExpression={this.evaluateExpression.bind(this)} handleOnClick={this.handleOnClick.bind(this)} />
+          </div>
+          <h2>{this.state.expression}</h2>
         </div>
-        <h2>{this.state.expression}</h2>
+        <Log data={this.state.log}/>
       </div>
     );
   }
