@@ -1,14 +1,17 @@
 .app {
   font-family: 'Noto Sans HK', sans-serif;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
 }
 
 .appWrapper {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 h2 {
   font-size: 36px;
-  margin-left: 20%;
   letter-spacing: 2px;
 }

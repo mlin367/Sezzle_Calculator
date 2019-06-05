@@ -70,10 +70,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="appWrapper">
-          <div>
-            <h1>Sezzle Calculator</h1>
-            <Calculator evaluateExpression={this.evaluateExpression.bind(this)} handleOnClick={this.handleOnClick.bind(this)} />
-          </div>
+          <h1>Sezzle Calculator</h1>
+          <Calculator evaluateExpression={this.evaluateExpression.bind(this)} handleOnClick={this.handleOnClick.bind(this)} />
           <h2>{this.state.expression}</h2>
         </div>
         <Log data={this.state.log}/>

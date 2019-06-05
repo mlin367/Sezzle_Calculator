@@ -1,0 +1,10 @@
+.log {
+  background-color: lightgray;
+  width: 30%;
+  text-align: center;
+}
+
+.logEntry {
+  font-style: italic;
+  color: grey;
+}
