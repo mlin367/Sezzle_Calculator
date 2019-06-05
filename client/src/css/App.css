@@ -14,4 +14,8 @@
 h2 {
   font-size: 36px;
   letter-spacing: 2px;
+  position: absolute;
+  font-size: 36px;
+  top: 250px;
+  letter-spacing: 2px;
 }
