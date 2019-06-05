@@ -13,6 +13,14 @@ class App extends React.Component {
     finishedEvaluation: false
   };
 
+  componentDidMount() {
+    socket.on('evaluation', logData => {
+      this.setState({
+        log: logData
+      })
+    })
+  }
+
   buttonClicks(e) {
     const value = e.target.getAttribute('data-value');
     if (value === 'C') this.setState({ expression: '' });
@@ -46,7 +54,7 @@ class App extends React.Component {
       this.setState({
         expression: this.state.expression + ' = ' + answer,
         finishedEvaluation: true
-      })
+      }, () => socket.emit('evaluation', this.state.expression))
     }
     catch(error) {
       this.setState({

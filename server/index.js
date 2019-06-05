@@ -12,6 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '/../client/dist/')));
 
-io.on('connection', socket => console.log('a user connected'));
+const logData = [];
+
+io.on('connection', socket => {
+  console.log('a user connected');
+  socket.on('disconnect', () => console.log('a user disconnected'));
+  socket.on('evaluation', expression => {
+    logData.push(expression);
+    io.emit('evaluation', logData);
+  })
+});
 
 http.listen(5000, () => console.log('listening on port 5000'));
