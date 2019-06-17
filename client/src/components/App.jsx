@@ -5,7 +5,7 @@ import Log from './Log';
 import * as math from 'mathjs'
 import '../css/App.css';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://sezzler-calculator.herokuapp.com/');
 
 class App extends React.Component {
   state = {
