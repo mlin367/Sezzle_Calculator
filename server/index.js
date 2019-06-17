@@ -2,8 +2,8 @@ const express = require('express');
 
 const app = express();
 
-const https = require('https').Server(app);
-const io = require('socket.io')(https);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const path = require('path');
 const bodyParser = require('body-parser');
 
@@ -25,4 +25,4 @@ io.on('connection', socket => {
   })
 });
 
-https.listen(process.env.PORT || 5000, () => console.log('listening on port 5000'));
+http.listen(process.env.PORT || 5000, () => console.log('listening on port 5000'));
